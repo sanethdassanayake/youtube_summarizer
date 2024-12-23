@@ -81,17 +81,8 @@ def main():
             """,
             unsafe_allow_html=True,
         )
-        # st.markdown(st.session_state.summary)
-        st.markdown(
-            f"""
-            <div class="custom-background">
-                {st.session_state.summary}
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.markdown(st.session_state.summary)
         
-
     # Footer
     st.markdown("---")
     st.markdown(
