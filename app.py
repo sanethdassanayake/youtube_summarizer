@@ -23,7 +23,23 @@ def main():
 
     init_session_state()
     
-    st.title("YouTube Video Summarizer")
+    st.set_page_config(
+        page_title="ASAP - YouTube Video Summarizer",
+        page_icon="🚀",
+        layout="centered",
+        initial_sidebar_state="collapsed",
+    )
+
+    # Header
+    st.title("ASAP - YouTube Video Summarizer")
+    st.markdown(
+        """
+        <div style="font-size: 1.2em;">
+            A YouTube video summarizer powered by Gemini Pro.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Layout
     col1, col2 = st.columns([4, 1])
@@ -53,18 +69,35 @@ def main():
 
     if st.session_state.summary:
         st.subheader("Summary")
-        st.write(st.session_state.summary)
-
-    # Update session state
-    if yt_link and yt_link != st.session_state.last_url:
-        st.session_state.last_url = yt_link
+        st.markdown(
+            """
+            <style>
+                .stMarkdown > p {
+                    background-color: #000;
+                    border-radius: 20px;
+                    padding: 20px;
+                }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+        # st.markdown(st.session_state.summary)
+        st.markdown(
+            f"""
+            <div class="custom-background">
+                {st.session_state.summary}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        
 
     # Footer
     st.markdown("---")
     st.markdown(
         """
-        <div style="text-align: center; padding: 10px;">
-            Made with ❤️ by Saneth Dassanayake
+        <div style="text-align: center; font-size: 1.0em;">
+            summarizenow 1.0v | 2024 © Saneth Dassanayake
         </div>
         <div style="text-align: center;">
             <a href="https://github.com/sanethdassanayake" target="_blank">GitHub</a> |
